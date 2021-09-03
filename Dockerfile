@@ -12,5 +12,5 @@ RUN rm -rf /etc/nginx/conf.d
 RUN mkdir -p /etc/nginx/conf.d
 COPY ./default.conf /etc/nginx/conf.d/
 COPY --from=builder /usr/src/app/dist/caprover-angular-app /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 4200
 CMD ["nginx", "-g", "daemon off;"]
