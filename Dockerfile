@@ -1,4 +1,4 @@
-FROM node:12.16 as builder
+FROM node:latest as builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
@@ -7,7 +7,7 @@ RUN npm install
 RUN npm run build:prod
 
 # production environment
-FROM nginx:1.13.9-alpine
+FROM nginx:stable-alpine
 RUN rm -rf /etc/nginx/conf.d
 RUN mkdir -p /etc/nginx/conf.d
 COPY ./default.conf /etc/nginx/conf.d/
